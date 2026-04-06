@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.kh.spring06.dao.CourseDao;
+
 import com.kh.spring06.dto.CourseDto;
 
 @RestController
@@ -61,6 +62,27 @@ public class CourseController {
 		return buffer.toString();
 
 	}
-
+	
+	@RequestMapping("/detail")
+	public String detail(@RequestParam int courseNo) {
+		CourseDto courseDto =courseDao.selectOne(courseNo);
+		
+		if(courseDto==null) {
+			return "존재 x";
+		}
+		else {
+			StringBuffer buffer = new StringBuffer();
+			buffer.append(courseDto.getCourseNo()+"<br>");
+			buffer.append("이름: " + courseDto.getCourseName()+"<br>");
+			buffer.append("카테고리: "+courseDto.getCategory()+"<br>");
+			buffer.append("수강료: "+courseDto.getFee()+"<br>");
+			buffer.append("시간: "+courseDto.getLectureTime()+"<br>");
+			buffer.append("수업 타입: "+courseDto.getClassType()+"<br>");
+		
+			return buffer.toString();
+		
+		}
+	
+	}
 
 }

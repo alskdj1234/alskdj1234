@@ -63,5 +63,15 @@ public class CourseDao {
 
 		return jdbcTemplate.query(sql, courseMapper, params);
 	}
-
+	
+	public CourseDto selectOne(int courseNo) {
+		
+		String sql = "select * from course where course_no = ? ";
+		
+		Object[] params = {courseNo};
+		List<CourseDto> list =jdbcTemplate.query(sql, courseMapper,params);
+		return list.isEmpty()?null:list.get(0);
+	}
+	
+	
 }
