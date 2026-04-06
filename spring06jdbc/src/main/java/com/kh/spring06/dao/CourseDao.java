@@ -1,4 +1,4 @@
-package com.kh.spring07.dao;
+package com.kh.spring06.dao;
 
 import java.util.List;
 import java.util.Set;
@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-
-import com.kh.spring07.dto.CourseDto;
-import com.kh.spring07.mapper.CourseMapper;
+import com.kh.spring06.mapper.CourseMapper;
+import com.kh.spring06.dto.CourseDto;
 
 @Repository // 파일 또는 dbms 제어도구
 public class CourseDao {

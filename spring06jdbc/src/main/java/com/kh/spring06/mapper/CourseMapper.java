@@ -1,4 +1,5 @@
-package com.kh.spring07.mapper;
+
+package com.kh.spring06.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -6,7 +7,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import com.kh.spring07.dto.CourseDto;
+import com.kh.spring06.dto.CourseDto;
 @Component//외부 도움없이(오토와이어 없이) 스스로 작업을 해내는 도구
 public class CourseMapper implements RowMapper<CourseDto>{
 	

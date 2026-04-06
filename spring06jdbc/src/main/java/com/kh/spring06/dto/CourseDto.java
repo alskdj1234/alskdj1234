@@ -1,4 +1,4 @@
-package com.kh.spring07.dto;
+package com.kh.spring06.dto;
 
 public class CourseDto {
 	private int courseNo;
@@ -45,6 +45,11 @@ public class CourseDto {
 	}
 	public void setClassType(String classType) {
 		this.classType = classType;
+	}
+	@Override
+	public String toString() {
+		return "CourseDto [courseNo=" + courseNo + ", courseName=" + courseName + ", category=" + category
+				+ ", lectureTime=" + lectureTime + ", fee=" + fee + ", classType=" + classType + "]";
 	}
 	
 }

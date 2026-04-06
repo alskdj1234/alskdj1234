@@ -65,5 +65,25 @@ public class CountryController {
 
 	}
 
+	@RequestMapping("/detail")
+	public String detail(@RequestParam int countryNo) {
+		CountryDto countryDto =countryDao.selectOne(countryNo);
+		
+		if(countryDto==null) {
+			return "국가 존재 x";
+		}
+		else {
+			StringBuffer buffer = new StringBuffer();
+			buffer.append(countryDto.getCountryNo()+"<br>");
+			buffer.append("대륙: " + countryDto.getCountryRegion()+"<br>");
+			buffer.append("이름: "+countryDto.getCountryName()+"<br>");
+			buffer.append("수도: "+countryDto.getCountryCapital()+"<br>");
+			buffer.append("인구 수: "+countryDto.getCountryPopulation()+"<br>");
+		
+			return buffer.toString();
+		
+		}
+	
+	}
 	
 }

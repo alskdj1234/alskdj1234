@@ -1,4 +1,4 @@
-package com.kh.spring07.controller;
+package com.kh.spring06.controller;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import com.kh.spring07.dao.CourseDao;
-import com.kh.spring07.dto.CourseDto;
+import com.kh.spring06.dao.CourseDao;
+import com.kh.spring06.dto.CourseDto;
 
 @RestController
 @RequestMapping("/course") // 공용주소

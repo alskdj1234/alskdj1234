@@ -66,5 +66,14 @@ public class CountryDao {
 
 		return jdbcTemplate.query(sql, countryMapper, params);
 	}
-
+	
+	public CountryDto selectOne(int countryNo) {
+		
+		String sql = "select * from country where country_no = ? ";
+		Object[] params = {countryNo};
+		
+		List<CountryDto> list = jdbcTemplate.query(sql, countryMapper,params);
+		return list.isEmpty()?null:list.get(0);
+		
+	}
 }
