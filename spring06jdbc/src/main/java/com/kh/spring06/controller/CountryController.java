@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kh.spring06.dao.CountryDao;
 import com.kh.spring06.dto.CountryDto;
 @RestController //등록 (제어 반전)
+@RequestMapping("/country")
 public class CountryController {
 @Autowired// 주세요 해봐 (의존성 주입)
 private CountryDao countryDao;
