@@ -5,7 +5,7 @@
 
 <h1>강의 정보 등록 페이지</h1>
 
-<form action="./insert2">
+<form action="./insert" method="post">
 
 	이름 <input type="text" name="courseName" required> <br>
 <!-- 	<br> 카테고리<input type="text" name="category" placeholder="이론/실습/시험" required> <br> -->

@@ -2,7 +2,9 @@ package com.kh.spring09.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.spring09.dao.CountryDao;
@@ -16,21 +18,21 @@ public class CountryController {
  
  	//등록(화면과 처리 코드 결합)
  	// 입력 -> 처리 + 출력
- 	@RequestMapping("/insert1")
- 	public String insert1() {
- 		return "/WEB-INF/views/country/insert1.jsp";
+ 	@GetMapping("/insert")
+ 	public String insert() {
+ 		return "/WEB-INF/views/country/insert.jsp";
  	}
  	
- 	@RequestMapping("/insert2")
- 	public String insert2(@ModelAttribute CountryDto countryDto) {
+ 	@PostMapping("/insert")
+ 	public String insert(@ModelAttribute CountryDto countryDto) {
  		
  		countryDao.insert(countryDto);
- 		return "redirect:./insert3";
+ 		return "redirect:./insertComplete";
  	}
  	
- 	@RequestMapping("/insert3")
- 	public String insert3() {
- 		return"/WEB-INF/views/country/insert3.jsp";
+ 	@RequestMapping("/insertComplete")
+ 	public String insertComplete() {
+ 		return"/WEB-INF/views/country/insertComplete.jsp";
  	}
  	
 }
