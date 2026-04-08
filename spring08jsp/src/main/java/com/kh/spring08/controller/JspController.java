@@ -4,12 +4,15 @@ import java.text.DecimalFormat;
 import java.text.Format;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -76,5 +79,43 @@ public class JspController {
 		
 	}
 
+	
+	@RequestMapping("/test04")
+	public String test04(Model  model) {
+		//배열이나 리스트와 같이 뭉텅이로 오는 경우
+		//이를 전달하여 출력
+		
+		Random r = new Random();
+		
+		Set<Integer> lotto = new TreeSet<>();
+		
+		while(lotto.size()<6) {
+			lotto.add(r.nextInt(45)+1);
+		}
+		
+		
+		
+		model.addAttribute("lotto", lotto);
+		return "/WEB-INF/views/jsp/test04.jsp";
+	}
+	
+	@RequestMapping("/test05")
+	public String test05(Model model) {
+	
+		
+		Random r = new Random();
+		
+		List<Integer> dice = new ArrayList<>();
+		
+		while(dice.size()<10) {
+			dice.add(r.nextInt(6)+1);
+		}
+		
+		
+		
+		model.addAttribute("dice", dice);
+		return "/WEB-INF/views/jsp/test05.jsp";
+	}
+	
 
 }
