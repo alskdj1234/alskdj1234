@@ -24,7 +24,7 @@
  <br>
  출판사<input type="text" name="bookPublisher"> <br><br>
  페이지수<input type="text" name="bookPageCount"> <br><br>
- 판매가<input type="text" name="bookPrice"> <br><br>
+ 판매가<input type="text" name="bookPrice" required> <br><br>
  출간일<input type="date" name="bookPublicationDate"><br><br>
  
  
