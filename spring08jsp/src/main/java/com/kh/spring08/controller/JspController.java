@@ -1,10 +1,17 @@
 package com.kh.spring08.controller;
 
+import java.text.DecimalFormat;
+import java.text.Format;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Random;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/jsp")
@@ -22,4 +29,52 @@ public class JspController {
 		model.addAttribute("lotto", lotto);
 		return "/WEB-INF/views/jsp/test01.jsp";
 	}
+
+	@GetMapping("/test02")
+	public String test02(Model model, @RequestParam String birth) {
+		
+	
+		LocalDate d = LocalDate.parse(birth);
+		LocalDate cur = LocalDate.now();
+		Period period = Period.between(d, cur);
+		int globalAge = period.getYears();
+		
+		int koreanAge = cur.getYear()-d.getYear()+1;
+		
+		
+		model.addAttribute("globalAge",globalAge);
+		model.addAttribute("koreanAge",koreanAge);
+		
+	
+	return "/WEB-INF/views/jsp/test02.jsp";
+	}
+
+	
+	@GetMapping("/test03")
+	public String test03(Model model, @RequestParam long krw) {
+		
+		Float won = (float)krw;
+		Float todayDollar = 1472.75f;
+		Float usdKrw = won/todayDollar;
+		
+		Float todayYen = 9.32f;
+		Float yenKrw = won/todayYen;
+		
+		Float todayYuan =214.99f;
+		Float yuanKrw = won/todayYuan;
+		
+		Format f = new DecimalFormat("#,##0.00");
+		
+		
+		model.addAttribute("usdKrw", f.format(usdKrw));
+		model.addAttribute("yenKrw", f.format(yenKrw));
+		model.addAttribute("yuanKrw", f.format(yuanKrw));
+		
+		return "/WEB-INF/views/jsp/test03.jsp";
+		
+		
+		
+	}
+
+
 }
