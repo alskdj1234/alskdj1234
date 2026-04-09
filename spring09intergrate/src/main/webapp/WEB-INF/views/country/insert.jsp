@@ -13,3 +13,5 @@
  <button>등록하기</button>
  
  </form>
+ 
+ <h2><a href="./list">목록으로</a> </h2>
