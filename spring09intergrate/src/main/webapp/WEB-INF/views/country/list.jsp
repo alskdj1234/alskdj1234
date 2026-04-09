@@ -1,9 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!-- 제목 -->
 <h1>국가 목록 및 검색</h1> 
+
+
+
+
+
+<table>
+	<thead>
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>대륙</th>
+			<th>수도</th>
+			<th>인구</th>
+
+		</tr>
+
+
+	</thead>
+	<tbody align="center">
+		<c:forEach var="countryDto" items="${list}">
+			<tr>
+				<td>${countryDto.countryNo}</td>
+				<td><a href="./detail?countryNo=${countryDto.countryNo}">${countryDto.countryName}</a></td>
+				<td>${countryDto.countryRegion}</td>
+				<td>${countryDto.countryCapital}</td>
+				<td align="right">${countryDto.countryPopulation}</td>
+
+
+
+			</tr>
+
+		</c:forEach>
+	</tbody>
+
+
+
+</table>
+
+
 
 <!-- 검색창 -->
 <form action="./list">

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.spring09.dao.CourseDao;
 import com.kh.spring09.dto.CourseDto;
+import com.kh.spring09.exception.TargetNotfoundException;
 
 @Controller
 @RequestMapping("/course") // 공용주소
@@ -46,6 +47,14 @@ public class CourseController {
 		List<CourseDto> list = courseDao.selectList(column,keyword);
 		model.addAttribute("list", list);
 		return"/WEB-INF/views/course/list.jsp";
+	}
+	
+	@RequestMapping("/detail")
+	public String detail (Model model, @RequestParam int courseNo) {
+		CourseDto courseDto = courseDao.selectOne(courseNo);
+		if(courseDto==null)throw new TargetNotfoundException("강좌가 존재하지 않아요");
+		model.addAttribute("courseDto", courseDto);
+		return "/WEB-INF/views/course/detail.jsp";
 	}
  	
 }

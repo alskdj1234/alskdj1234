@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.spring09.dao.CountryDao;
 import com.kh.spring09.dto.CountryDto;
+import com.kh.spring09.exception.TargetNotfoundException;
 
 @Controller
 @RequestMapping("/country")
@@ -49,4 +50,17 @@ public class CountryController {
  		return"/WEB-INF/views/country/list.jsp";
  		
  	}
+ 	
+ 	@RequestMapping("/detail")
+ 	public String detail(Model model,@RequestParam int countryNo) {
+ 		CountryDto countryDto=countryDao.selectOne(countryNo);
+ 		//잘못된 번호인 경우 (countryDto==null)이를 오류(500)으로 처리
+ 		if(countryDto==null) {
+ 			throw new TargetNotfoundException("국가가 없어요");
+ 		}
+ 		model.addAttribute("countryDto", countryDto);
+ 	 return"/WEB-INF/views/country/detail.jsp";
+ 	}
+
+ 	
 }
