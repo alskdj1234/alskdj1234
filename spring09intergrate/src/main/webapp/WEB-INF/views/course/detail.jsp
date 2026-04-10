@@ -20,4 +20,7 @@
 
 <h2>
 <a href="./list">목록으로</a>
+<h2><a href="./insert">신규 등록</a></h2>
+<h2><a href="./edit?courseNo=${courseDto.courseNo}">수정하기</a></h2>
+<h2><a href="./delete?courseNo=${courseDto.courseNo}">삭제하기</a></h2>
 </h2>

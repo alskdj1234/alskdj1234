@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.spring09.dao.CourseDao;
+import com.kh.spring09.dto.CountryDto;
 import com.kh.spring09.dto.CourseDto;
 import com.kh.spring09.exception.TargetNotfoundException;
 
@@ -57,4 +58,32 @@ public class CourseController {
 		return "/WEB-INF/views/course/detail.jsp";
 	}
  	
+	@RequestMapping("/delete")
+		public String delete(@RequestParam int courseNo) {
+			CourseDto courseDto = courseDao.selectOne(courseNo);
+			if(courseDto == null) throw new TargetNotfoundException("존재하지 않는 국가");
+			
+			courseDao.delete(courseNo);
+			return "redirect:./list";//상대경로
+			//return "redirect:/country/list";//절대경로
+		}
+
+	//수정 매핑
+		//- GET은 상세와 동일한 작업을 수행함 (보여주는 페이지가 다름)
+		@GetMapping("/edit")
+		public String edit(@RequestParam int courseNo, Model model) {
+			CourseDto courseDto = courseDao.selectOne(courseNo);
+			if(courseDto == null) throw new TargetNotfoundException("존재하지 않는 국가");
+			
+			model.addAttribute("courseDto", courseDto);
+			return "/WEB-INF/views/course/edit.jsp";
+		}
+		
+		@PostMapping("/edit")
+		public String edit(@ModelAttribute CourseDto courseDto) {
+			
+			courseDao.update(courseDto);
+			return "redirect:./detail?countryNo="+courseDto.getCourseNo();
+		}
+
 }
