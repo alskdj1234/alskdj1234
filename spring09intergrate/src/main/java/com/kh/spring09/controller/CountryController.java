@@ -84,6 +84,11 @@ public class CountryController {
  			return "/WEB-INF/views/country/edit.jsp";
  		}
  		
- 		//@PostMapping("/edit")
+ 		@PostMapping("/edit")
+ 		public String edit(@ModelAttribute CountryDto countryDto) {
+ 			
+ 			countryDao.update(countryDto);
+ 			return "redirect:./detail?countryNo="+countryDto.getCountryNo();
+ 		}
  	
 }
